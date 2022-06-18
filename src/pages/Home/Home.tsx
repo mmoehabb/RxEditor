@@ -3,9 +3,10 @@ import { useAnimate } from 'react-animation-maker'
 import 
     {FadeIn, FadeOut, SlideOutRight, SlideInDown, SlideInRight} 
 from 'react-animation-maker'
-import illustration from './media/illustration.svg'
 
 import getStyle from './style/HomeStyle'
+import illustration from './media/illustration.svg'
+import githubIcon from './media/github-icon.svg'
 
 import GetStartedSection from './components/GetStartedSection'
 import LoadFileSection from './components/LoadFileSection'
@@ -15,7 +16,7 @@ const Home = () => {
 
     const [childAnim, setChildAnim] = useState(true);
     
-    const [Illustration] = useAnimate(SlideInDown);
+    const [SlideFromBottomAnim] = useAnimate(SlideInDown);
     const [GsAnim, setGsAnim] = useAnimate(FadeIn);
     const [LfAnim, setLfAnim] = useAnimate({from: {opacity: 0}, to: []});
 
@@ -32,13 +33,25 @@ const Home = () => {
 
     return (
         <div style={style.root}>
-            <Illustration style={style.illustration}>
+            <SlideFromBottomAnim style={style.githubIcon}>
+                <a href="https://github.com/Mahmoud-Ehab/RxEditor"
+                target="_blank"
+                rel="noreferrer">
+                    <img 
+                        src={githubIcon}
+                        width='100%'
+                        alt=""
+                    />
+                </a>
+            </SlideFromBottomAnim>
+
+            <SlideFromBottomAnim style={style.illustration}>
                 <img 
                     src={illustration}
                     width='100%'
                     alt=""
                 />
-            </Illustration>
+            </SlideFromBottomAnim>
 
             <GsAnim style={{...style.animContainer, zIndex: 2}}>
                 <GetStartedSection
