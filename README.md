@@ -16,3 +16,6 @@ the desired style (normal, slide,... etc).
 
 # Try it
 [https://rx-editor.netlify.app](https://rx-editor.netlify.app)
+
+## Samples
+- [IntroToAgile.json](https://rx-editor.netlify.app/ViewContent/?fileURL=https://raw.githubusercontent.com/Mahmoud-Ehab/RxEditor/main/samples/IntroToAgile.json)
