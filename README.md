@@ -15,4 +15,4 @@ the desired style (normal, slide,... etc).
 - Export data as md.
 
 # Try it
-(https://mahmoud-ehab.github.io/RxEditor)[https://mahmoud-ehab.github.io/RxEditor]
+(https://rx-editor.netlify.app)[https://rx-editor.netlify.app]
