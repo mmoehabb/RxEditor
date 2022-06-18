@@ -13,3 +13,6 @@ the desired style (normal, slide,... etc).
 
 - Export data as pdf.
 - Export data as md.
+
+# Try it
+(https://mahmoud-ehab.github.io/RxEditor)[https://mahmoud-ehab.github.io/RxEditor]
