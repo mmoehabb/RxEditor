@@ -23,7 +23,8 @@ const ButtonsContainer = (props: Props) => {
         )}
 
         <Button onClick={() => props.onSave()}
-            mainStyle={style.saveBtn} 
+            style={style.saveBtn}
+            mainStyle={{}} 
             hoverStyle={{}}
             label="Save"
         />
