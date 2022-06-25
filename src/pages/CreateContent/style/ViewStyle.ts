@@ -4,9 +4,10 @@ const getStyle = () => ({
   secDiv: {
       display: 'flex', 
       flexFlow: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: mediaQuery('(min-width: 768px)') ? '80%' : '95%',
+      width: '100%',
+      height: '100%',
+      padding: 20,
+      boxSizing: 'border-box' as 'border-box',
       overflow: 'hidden',
   },
 
@@ -20,7 +21,7 @@ const getStyle = () => ({
 
   labelInput: {
       textAlign: 'center' as 'center',
-      fontSize: mediaQuery('(min-width: 768px)') ? '2em' : '1em',
+      fontSize: '1em',
       fontWeight: 'bold',
       width: '80%',
       margin: 15,
@@ -47,7 +48,11 @@ const getStyle = () => ({
           cursor: 'pointer',
           transitionDuration: '250ms',
       })
-  }
+  },
+
+  editorContainer: {
+    height: '85%',
+  }, 
 });
 
 export default getStyle;

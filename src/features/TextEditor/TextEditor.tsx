@@ -13,9 +13,9 @@ interface Props {
 }
 
 const TextEditor = (props: Props) => {
-    const style = getStyle(props);
     const contentDiv = useRef<HTMLDivElement>(null);
     const [saved, setSaved] = useState(true);
+    const style = getStyle(props, saved);
 
     // Load data from props.content if any exists
     useEffect(() => {

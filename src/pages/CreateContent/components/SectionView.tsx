@@ -26,13 +26,12 @@ const TopicView = ({DM}: Props) => {
           onClick={() => DM.removeSelectedSection()}
         />
       </div>
-
-      <TextEditor 
-        height={'75vh'} 
-        width={'100%'} 
-        content={DM.getSelectedSection()?.content}
-        updateContent={(c) => DM.modifySelectedSectionContent(c)}
-      />
+      <div style={style.editorContainer}>
+        <TextEditor 
+          content={DM.getSelectedSection()?.content}
+          updateContent={(c) => DM.modifySelectedSectionContent(c)}
+        />
+      </div>
     </div>
   );
 }
