@@ -2,18 +2,20 @@ import mediaQuery from "../../../scripts/mediaQuery";
 
 const getStyle = () => ({
   root: {
-    flex: 1,
     display: 'flex',
     flexFlow: 'column',
-    padding: '20px 40px',
+    justifyContent: 'space-between',
+    
+    width: '15em',
+    height: '100vh',
+    padding: 10,
+    
     boxSizing: 'border-box' as 'border-box',
     color: '#f6f6f6',
     background: 'linear-gradient(#3BAFB7, #4EAED7)',
     overflow: 'auto',
 
     position: (mediaQuery('(min-width: 768px)') ? '' : 'absolute') as 'absolute',
-    width: mediaQuery('(min-width: 768px)') ? '60vw' : '200px',
-    height: '100vh',
   },
 
   showBtn: {
@@ -22,6 +24,12 @@ const getStyle = () => ({
     left: -40,
     top: '45%',
     cursor: 'pointer',
+  },
+
+  children: {
+    display: 'flex',
+    flexFlow: 'column',
+    width: '100%',
   },
 });
 

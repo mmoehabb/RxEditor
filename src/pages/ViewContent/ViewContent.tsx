@@ -6,8 +6,7 @@ import getStyle from "./style/MainStyle";
 import mediaQuery from "../../scripts/mediaQuery";
 
 import TextEditor from "../../features/TextEditor/TextEditor";
-import Navigation from "./components/Navigation";
-
+import Navigation from "../../features/Navigation/Navigation";
 
 const ViewContent = () => {
     const style = getStyle();
@@ -37,6 +36,7 @@ const ViewContent = () => {
                 DM={DM}
                 onShow={() => showNav()}
                 hidden={!navVisibility} 
+                viewMode={true}
             />
 
             <div style={style.contentDiv.root} onClick={() => hideNav()}>

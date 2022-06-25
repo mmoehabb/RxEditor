@@ -5,10 +5,12 @@ import loadFromHeader from "../../scripts/loadFromHeader";
 import getStyle from "./style/MainStyle";
 import mediaQuery from "../../scripts/mediaQuery";
 
-import Navigation from "./components/Navigation";
+import Navigation from "../../features/Navigation/Navigation";
 import SectionView from "./components/SectionView";
 import HeadlineView from "./components/HeadlineView";
 import TopicView from "./components/TopicView";
+import Button from "../../MiniComponents/Button";
+import exportAsJSON from "../../scripts/Exports/exportAsJSON";
 
 
 const CreateContent = () => {
@@ -27,6 +29,10 @@ const CreateContent = () => {
             setNavVisibility(false);
     }
 
+    const exportData = () => {
+        exportAsJSON(DM);
+    }
+
     // Load json file, if a fileURL is given in window.location
     if (firstRender) {
         loadFromHeader(DM, 'fileURL');
@@ -38,8 +44,14 @@ const CreateContent = () => {
             <Navigation 
                 DM={DM}
                 onShow={() => showNav()}
-                hidden={!navVisibility} 
-            /> 
+                hidden={!navVisibility}>
+                <Button 
+                    mainStyle={style.exportBtn.default} 
+                    hoverStyle={style.exportBtn.hover}
+                    label={"Export"} 
+                    onClick={() => exportData()}
+                />  
+            </Navigation> 
 
             <div style={style.contentDiv} onClick={() => hideNav()}>
                 {
