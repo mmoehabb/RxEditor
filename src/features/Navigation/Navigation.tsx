@@ -33,8 +33,9 @@ const Navigation = (props: Props) => {
       />
       :
       <div style={style.root}>
-          {["topics", "headlines", "sections"].map((cat) => 
+          {["topics", "headlines", "sections"].map((cat,i) => 
             <CategoryGroup 
+              key={i}
               category={cat as "topics" | "headlines" | "sections"} 
               dataManager={props.DM} 
               viewMode={props.viewMode}
