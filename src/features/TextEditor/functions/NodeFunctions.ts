@@ -1,3 +1,5 @@
+import { getUserInput } from "../../Alert/Alert";
+
 // Add new node to the editor. Either by inserting or surrounding.
 export const add = (tag: string, content?:string, surrounding?: boolean) => {
     const selection = document.getSelection();
@@ -33,14 +35,14 @@ export const add = (tag: string, content?:string, surrounding?: boolean) => {
 // Add node with a specific attributes
 export const addTagWithAttributes = (tag: string, attributes:Array<string>) => {
     if (tag === "") {
-        tag = String(window.prompt(`Enter Node name value:`));
+        tag = String(getUserInput(`Enter Node name value:`));
     }
 
     const addedElement = add(tag, "Empty", true);
     if (!addedElement) return;
     
     for (let attr of attributes) {
-        const inputValue = String(window.prompt(`Enter ${attr} attribute value:`));
+        const inputValue = String(getUserInput(`Enter ${attr} attribute value:`));
         addedElement?.setAttribute(attr, inputValue);
     }
 }
