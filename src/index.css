@@ -20,6 +20,14 @@ code {
   outline: none;
 }
 
+#MessagesContainer {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  max-width: 30vw;
+  background-color: transparent;
+}
+
 @media (max-width: 1024px) {
   body {
     font-size: 16px;
@@ -29,6 +37,9 @@ code {
 @media (max-width: 768px) {
   body {
     font-size: 14px;
+  }
+  #MessagesContainer {
+    max-width: 45vw;
   }
 }
 
