@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import MessageView from "./views/MessageView";
+import Prompt from "./views/Prompt";
 
 export const showMessage = (text: string, color: string) => {
   const container = document.getElementById('MessagesContainer');
@@ -18,8 +19,23 @@ export const showMessage = (text: string, color: string) => {
   );
 }
 
-export const getUserInput = (text: string) => {
-  return window.prompt(text);
+export const getUserInput = (
+  text: string, 
+  onSubmit: (value: string) => void
+) => {
+  const container = document.getElementById('PromptsContainer');
+  const msgElement = document.createElement("div");
+
+  if (!container) return;
+
+  container.appendChild(msgElement);
+  ReactDOM.render(
+    <Prompt 
+      text={text} 
+      onSubmit={onSubmit} 
+    />,
+    msgElement
+  );
 }
 
 export const showSuccess = (text: string) => {
