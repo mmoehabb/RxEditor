@@ -54,15 +54,15 @@ const getStyle = () => ({
   mainDiv: {
     display: 'flex',
     flexFlow: 'column',
+    justifyContent: 'space-evenly',
     height: '30vh',
     margin: '20px 0',
     padding: 25,
-    boxSizing: 'border-box',
     borderRadius: 25,
+    boxSizing: 'border-box',
     border: 'solid #fff 5px',
     boxShadow: '0 0 10px 1px #00000022',
     backgroundColor: '#3BAFB7',
-    transitionDuration: '1s',
   },
 
   label: {
@@ -70,7 +70,6 @@ const getStyle = () => ({
   },
 
   input: {
-    margin: '10px 0',
     padding: 10,
     border: 0,
     borderRadius: 20,
@@ -79,7 +78,6 @@ const getStyle = () => ({
 
   button: {
     alignSelf: 'center',
-    margin: '10px 0',
     padding: '15px 30px',
     fontSize: '85%',
     border: 0,
