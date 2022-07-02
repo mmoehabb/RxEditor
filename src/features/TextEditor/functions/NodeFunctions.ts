@@ -1,9 +1,27 @@
-import { getUserInput } from "../../Alert/Alert";
+import { getUserInput, showError } from "../../Alert/Alert";
+
+
+const getRange = () => {
+	const selection = document.getSelection();
+	const range = selection?.getRangeAt(0);
+	return range;
+}
+
+const addAttributesTo = (element: HTMLElement, attributes: Array<string>) => {
+	if (!element) return;
+		
+	for (let attr of attributes) {
+		getUserInput(`Enter ${attr} attribute value:`, 
+			(value) => element?.setAttribute(attr, value)
+		);
+	}
+}
+
 
 // Add new node to the editor. Either by inserting or surrounding.
-export const add = (tag: string, content?:string, surrounding?: boolean) => {
-    const selection = document.getSelection();
-    const range = selection?.getRangeAt(0);
+export const add = (tag: string, content?:string, surrounding?: boolean, range?: Range) => {
+	try {
+    if (!range) range = getRange();
     const container = range?.commonAncestorContainer;
 
     if (!range?.collapsed && surrounding) {
@@ -29,22 +47,31 @@ export const add = (tag: string, content?:string, surrounding?: boolean) => {
         range?.insertNode(element);
         return element;
     }
+	}
+	catch(e: any) {
+		showError(e.message);
+	}
 }
 
 
 // Add node with a specific attributes
 export const addTagWithAttributes = (tag: string, attributes:Array<string>) => {
-    if (tag === "") {
-        tag = String(getUserInput(`Enter Node name value:`));
-    }
+	const range = getRange();
 
-    const addedElement = add(tag, "Empty", true);
-    if (!addedElement) return;
-    
-    for (let attr of attributes) {
-        const inputValue = String(getUserInput(`Enter ${attr} attribute value:`));
-        addedElement?.setAttribute(attr, inputValue);
-    }
+	if (tag === "") {
+		getUserInput(`Enter Node name value:`, 
+			(tag) => {
+				const addedElement = add(tag, "Empty", true, range);
+				if (addedElement)
+					addAttributesTo(addedElement, attributes)
+			}
+		);
+	}
+	else {
+		const addedElement = add(tag, "Empty", true, range);
+		if (addedElement)
+			addAttributesTo(addedElement, attributes)
+	}
 }
 
 
