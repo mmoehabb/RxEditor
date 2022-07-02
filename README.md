@@ -9,6 +9,8 @@ the desired style (normal, slide,... etc).
 
 # TODO
 - Add fullscreen feature in the editor.
+- Create a style for the content view.
+- Add buttons for resizing the font in ViewContent.
 - Export data as pdf.
 - Export data as md.
 
