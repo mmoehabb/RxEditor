@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAnimate, FadeIn, FadeOut } from 'react-animation-maker'
 
 interface Props {
@@ -10,9 +10,19 @@ const Prompt = (props: Props) => {
   const style = getStyle();
   
   const thisDiv = useRef(null);
+  const submitButton = useRef(null);
   const [inputValue, setInputValue] = useState('');
-
   const [Anim, setAnim] = useAnimate(FadeIn);
+
+  useEffect(() => {
+    window.onkeydown = (e) => {
+      if (e.key === 'Enter') {
+          e.preventDefault();
+          if (submitButton.current)
+            (submitButton.current as HTMLButtonElement).click();
+      }
+    }
+  }, []);
   
   const onSubmitHandler = () => {
     props.onSubmit(inputValue)
@@ -21,6 +31,10 @@ const Prompt = (props: Props) => {
       if (thisDiv.current)
         (thisDiv.current as HTMLElement).remove()
     }, 1000);
+  }
+
+  const onInputChangeHandler = (e: any) => {
+    setInputValue(e.target.value);
   }
 
   return (
@@ -35,10 +49,12 @@ const Prompt = (props: Props) => {
           style={style.input}
           type="text" 
           value={inputValue} 
-          onChange={(e) => setInputValue(e.target.value)} 
+          onChange={onInputChangeHandler} 
+          autoFocus
         />
 
-        <button style={style.button}
+        <button ref={submitButton}
+        style={style.button}
         onClick={onSubmitHandler}>
           Submit
         </button>
