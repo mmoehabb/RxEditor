@@ -34,7 +34,7 @@ code {
   height: auto;
   max-height: 33vh;
   left: calc(50vw - 15em);
-  top: calc(50vh - 8em);
+  top: 0;
   padding: 10px;
   color: #fff;
   background-color: transparent;
