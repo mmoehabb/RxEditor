@@ -78,6 +78,7 @@ const TextEditor = (props: Props) => {
     return (
         <div style={style.mainDiv}>
             <div 
+            id="TextEditorDiv"
             ref={contentDiv}
             style={style.contentDiv}
             onFocus={onEditorFocus}
