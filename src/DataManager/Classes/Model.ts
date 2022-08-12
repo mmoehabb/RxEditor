@@ -41,7 +41,7 @@ class DataManagerModel implements ModelInterface {
     this.data = data;
   }
 
-  getDataAsJSON() {
+  getDataAsJSON(): JSON {
     const json = JSON.parse(JSON.stringify(this.data));
     json.sections = {list: []};
 
