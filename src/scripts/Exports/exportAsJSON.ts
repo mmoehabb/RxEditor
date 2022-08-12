@@ -1,7 +1,6 @@
-import DataManager from "../../DataManager/Classes/Model";
 
-const exportAsJSON = (dataManager: DataManager) => {
-  const data = JSON.stringify(dataManager.getDataAsJSON());
+const exportAsJSON = (json: JSON) => {
+  const data = JSON.stringify(json);
   const type = "application/json";
   const blob = new Blob([data], {type});
 
