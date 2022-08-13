@@ -4,6 +4,8 @@ import { loadContentInto, rmChildrenFrom } from './functions/NodeFunctions';
 import getStyle from './style/MainStyle';
 import { getLastStateOf, isDifferent } from './functions/SaveFunctions';
 
+import '../../media/content-styles/content-style-1.css';
+
 interface Props {
     width?: string | number;
     height?: string | number;
