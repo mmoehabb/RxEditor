@@ -8,10 +8,9 @@ the desired style (normal, slide,... etc).
 > It is not yet complete; users can only edit and view data with the app. However, any data exported (as JSON) from the current version will be available for different types of exports/styling in future versions.
 
 # TODO
+- Add rearranging items facility in the navigation.
 - Add fullscreen feature in the editor.
-- Create a style for the content view.
 - Add buttons for resizing the font in ViewContent.
-- Export data as pdf.
 - Export data as md.
 
 # Try it
