@@ -10,12 +10,31 @@ const style = `
     border-bottom: solid 2px #444;
   }
 
-  h2 {
+  h2, h3 {
     color: #333;
   }
 
   div, p {
     text-align: justify;
+  }
+
+  code {
+    display: block;
+    padding: 25px;
+    margin: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px #00000011;
+    color: #eee;
+    background-color:#333;
+  }
+
+  note {
+    display: block;
+    text-align: left;
+    padding: 25px;
+    margin: 25px;
+    border-radius: 0 20px 0 20px;
+    background-color:#eaeaea;
   }
 `
 
