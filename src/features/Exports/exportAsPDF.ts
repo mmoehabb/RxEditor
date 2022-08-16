@@ -1,5 +1,5 @@
 import DataManagerModel from "../../DataManager/Classes/Model";
-import { loadContentInto } from "../../features/TextEditor/functions/NodeFunctions";
+import { loadContentInto } from "../TextEditor/functions/NodeFunctions";
 import contentStyle from "../../media/content-styles/content-style-1";
 
 const exportAsPDF = (dm: DataManagerModel) => {

@@ -13,8 +13,8 @@ import SectionView from "./components/SectionView"
 import HeadlineView from "./components/HeadlineView"
 import TopicView from "./components/TopicView"
 import Button from "../../MiniComponents/Button"
-import exportAsJSON from "../../scripts/Exports/exportAsJSON"
-import exportAsPDF from "../../scripts/Exports/exportAsPDF"
+import exportAsJSON from "../../features/Exports/exportAsJSON"
+import exportAsPDF from "../../features/Exports/exportAsPDF"
 
 
 const CreateContent = () => {
