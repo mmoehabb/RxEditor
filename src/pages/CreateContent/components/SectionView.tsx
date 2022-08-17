@@ -1,6 +1,6 @@
 import Button from "../../../MiniComponents/Button";
 import TextEditor from "../../../features/TextEditor/TextEditor";
-import DataManagerModel from "../../../DataManager/Classes/Model";
+import DataManagerModel from "../../../DataManager/StrategyModel/Model";
 import getStyle from "../style/ViewStyle";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 

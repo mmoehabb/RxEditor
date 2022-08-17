@@ -1,4 +1,4 @@
-import DataManager from "../DataManager/Classes/Model";
+import DataManager from "../DataManager/StrategyModel/Model";
 import { showError } from "../features/Alert/Alert";
 
 const loadFromHeader = (dataManager: DataManager, param: string) => {

@@ -1,4 +1,4 @@
-import DataManagerModel from "../../DataManager/Classes/Model";
+import DataManagerModel from "../../DataManager/StrategyModel/Model";
 import { loadContentInto } from "../TextEditor/functions/NodeFunctions";
 import contentStyle from "../../media/content-styles/content-style-1";
 

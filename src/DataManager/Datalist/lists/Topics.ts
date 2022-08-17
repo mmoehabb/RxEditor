@@ -1,6 +1,6 @@
-import DatalistInterface from "../Interfaces/DatalistInterface";
-import Selections from "../types/Selections";
-import Topic from "../types/Topic";
+import DatalistInterface from "../Datalist";
+import Selections from "../../types/Selections";
+import Topic from "../../types/Topic";
 
 class Topics extends DatalistInterface<Topic> {
   add() {

@@ -1,8 +1,8 @@
-import DatalistInterface from "../Interfaces/DatalistInterface";
-import Selections from "../types/Selections";
-import Section from "../types/Section";
+import Datalist from "../Datalist";
+import Selections from "../../types/Selections";
+import Section from "../../types/Section";
 
-class Sections extends DatalistInterface<Section> {
+class Sections extends Datalist<Section> {
   getList() {
     return super.getList() as Array<Section>;
   }

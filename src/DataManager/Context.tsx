@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import DataManagerModel from "./Classes/Model";
+import DataManagerModel from "./StrategyModel/Model";
 
 const DM = new DataManagerModel();
 const dataStream = sessionStorage.getItem("data");

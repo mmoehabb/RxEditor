@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
 import CategoryGroup from "./components/CategoryGroup";
-import DataManagerModel from "../../DataManager/Classes/Model";
+import DataManagerModel from "../../DataManager/StrategyModel/Model";
 import NavBtnImg from "../../media/navBtn.svg";
 import getStyle from "./style/MainStyle";
 

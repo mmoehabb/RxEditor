@@ -1,4 +1,4 @@
-import DataManagerModel from "../../../DataManager/Classes/Model";
+import DataManagerModel from "../../../DataManager/StrategyModel/Model";
 import SelectionsInterface from "../../../DataManager/types/Selections";
 import Button from "../../../MiniComponents/Button";
 import getStyle from "../style/CategoryStyle";

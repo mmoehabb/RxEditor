@@ -1,6 +1,6 @@
-import Headlines from "../Classes/Headlines";
-import Sections from "../Classes/Sections";
-import Topics from "../Classes/Topics";
+import Headlines from "../Datalist/lists/Headlines";
+import Sections from "../Datalist/lists/Sections";
+import Topics from "../Datalist/lists/Topics";
 
 import Headline from "../types/Headline";
 import Section from "../types/Section";

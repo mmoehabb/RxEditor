@@ -1,10 +1,10 @@
 import Selections from "../types/Selections";
-import Topics from "./Topics";
-import Headlines from "./Headlines";
-import Sections from "./Sections";
+import Topics from "../Datalist/lists/Topics";
+import Headlines from "../Datalist/lists/Headlines";
+import Sections from "../Datalist/lists/Sections";
 
 import { abstractNode, getNodeFromAbstract } from "../Functions/ContentManipulation";
-import ModelInterface, { Data, JSONData } from "../Interfaces/ModelInterface";
+import ModelInterface, { Data, JSONData } from "./ModelInterface";
 
 class DataManagerModel implements ModelInterface {
   private data: Data;

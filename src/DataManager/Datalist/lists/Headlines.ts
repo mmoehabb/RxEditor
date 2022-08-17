@@ -1,6 +1,6 @@
-import DatalistInterface from "../Interfaces/DatalistInterface";
-import Headline from "../types/Headline";
-import Selections from "../types/Selections";
+import DatalistInterface from "../Datalist";
+import Headline from "../../types/Headline";
+import Selections from "../../types/Selections";
 
 class Headlines extends DatalistInterface<Headline> {
   getList() {

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import DataManager from "../DataManager/Classes/Model";
+import DataManager from "../DataManager/StrategyModel/Model";
 import { DataManagerContext } from "../DataManager/Context";
 
 const useDataManager = () => {
