@@ -5,7 +5,7 @@ import Topic from "../types/Topic";
 
 type DataTypes = Topic | Section | Headline;
 
-export default class DatalistInterface<T extends DataTypes> {
+abstract class DatalistInterface<T extends DataTypes> {
   private list: Array<T> = [];
   private updateCallback: Function | undefined;
   
@@ -18,10 +18,11 @@ export default class DatalistInterface<T extends DataTypes> {
   }
 
   getList() {
-    return this.list;
+    return Array.from(this.list);
   }
   setList(newList: Array<T>) {
     this.list = newList;
+    this.dispatchUpdate();
   }
   
   get(id: number) {
@@ -31,6 +32,7 @@ export default class DatalistInterface<T extends DataTypes> {
   remove(id: number) {
     const newList = this.list.filter((elem) => elem.id !== id);
     this.list = newList;
+    this.dispatchUpdate();
   }
 
   modify(id: number, changes: object) {
@@ -39,13 +41,42 @@ export default class DatalistInterface<T extends DataTypes> {
       else return {...elem, ...changes}
     });
     this.list = newList;
+    this.dispatchUpdate();
   }
 
-  toList() {
-    return this.list;
+  moveElementUp(id: number) {
+    const topics = this.getList();
+    topics.every((topic, i) => {
+      if (topic.id === id) {
+        if (topics[i-1]) {
+          const tmp = topics[i-1];
+          topics[i-1] = topics[i];
+          topics[i] = tmp;
+        }
+        return false; // break;
+      }
+      return true; // continue
+    });
+    this.setList(topics);
   }
 
-  // instable functions
+  moveElementDown(id: number) {
+    const topics = this.getList();
+    topics.every((topic, i) => {
+      if (topic.id === id) {
+        if (topics[i+1]) {
+          const tmp = topics[i+1];
+          topics[i+1] = topics[i];
+          topics[i] = tmp;
+        }
+        return false; // break;
+      }
+      return true; // continue
+    });
+    this.setList(topics);
+  }
+
+  // unstable functions
   add(selections?: Selections){};
   filter(selections: Selections){};
 
@@ -55,3 +86,5 @@ export default class DatalistInterface<T extends DataTypes> {
     if (this.updateCallback) this.updateCallback();
   }
 }
+
+export default DatalistInterface;

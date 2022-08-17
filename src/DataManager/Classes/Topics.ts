@@ -1,6 +1,6 @@
 import DatalistInterface from "../Interfaces/DatalistInterface";
-import Selections from "../Interfaces/SelectionsInterface";
-import Topic from "../Interfaces/TopicInterface";
+import Selections from "../types/Selections";
+import Topic from "../types/Topic";
 
 class Topics extends DatalistInterface<Topic> {
   add() {
@@ -23,7 +23,7 @@ class Topics extends DatalistInterface<Topic> {
   }
 
   filter(selections: Selections) {
-    return this.toList();
+    return this.getList();
   }
 }
 

@@ -2,23 +2,38 @@ import Button from "../../../MiniComponents/Button";
 import TextEditor from "../../../features/TextEditor/TextEditor";
 import DataManagerModel from "../../../DataManager/Classes/Model";
 import getStyle from "../style/ViewStyle";
-
+import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 
 interface Props {
   DM: DataManagerModel;
 }
 
-const TopicView = ({DM}: Props) => {
+const SectionView = ({DM}: Props) => {
   const style = getStyle();
   
   return (
     <div style={style.secDiv}>
+      
       <div style={style.labelDiv}>
+
+        <div style={style.sortBtnsDiv}>
+          <div style={style.sortBtn}
+          onClick={() => DM.moveSelectedSectionUp()}>
+            <MdKeyboardArrowUp size="20px" color="#888" />
+          </div>
+
+          <div style={style.sortBtn} 
+          onClick={() => DM.moveSelectedSectionDown()}>
+            <MdKeyboardArrowDown size="20px" color="#888" />
+          </div>
+        </div>
+
         <input 
           style={style.labelInput} 
           value={DM.getSelectedSection()?.label} 
           onChange={({target}) => DM.modifySelectedSection(target.value)}
         />
+
         <Button 
           mainStyle={style.removeBtn()}
           hoverStyle={style.removeBtn('hover')}
@@ -36,4 +51,4 @@ const TopicView = ({DM}: Props) => {
   );
 }
 
-export default TopicView;
+export default SectionView;

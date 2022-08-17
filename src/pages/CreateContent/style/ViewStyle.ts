@@ -50,6 +50,17 @@ const getStyle = () => ({
       })
   },
 
+  sortBtnsDiv: {
+    display: 'flex',
+    flexFlow: 'column',
+    justifyContent: 'center',
+    padding: 10,
+  },
+
+  sortBtn: {
+    cursor: 'pointer',
+  },
+
   editorContainer: {
     height: '85%',
   }, 

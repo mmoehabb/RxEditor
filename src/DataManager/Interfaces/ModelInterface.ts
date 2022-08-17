@@ -32,15 +32,21 @@ declare interface ModelInterface {
   getSelectedTopic(): Topic;
   modifySelectedTopic(label: string): void;
   removeSelectedTopic(): void;
+  moveSelectedTopicUp(): void;
+  moveSelectedTopicDown(): void;
 
   getSelectedHeadline(): Headline;
   modifySelectedHeadline(label: string): void;
   removeSelectedHeadline(): void;
+  moveSelectedHeadlineUp(): void;
+  moveSelectedHeadlineDown(): void;
 
   getSelectedSection(): Section;
   modifySelectedSection(label: string): void;
   modifySelectedSectionContent(content: Array<Node>): void;
   removeSelectedSection(): void;
+  moveSelectedSectionUp(): void;
+  moveSelectedSectionDown(): void;
 
   clone(): ModelInterface;
 }

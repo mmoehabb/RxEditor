@@ -1,4 +1,4 @@
-import Selections from "../Interfaces/SelectionsInterface";
+import Selections from "../types/Selections";
 import Topics from "./Topics";
 import Headlines from "./Headlines";
 import Sections from "./Sections";
@@ -93,6 +93,7 @@ class DataManagerModel implements ModelInterface {
     if (this.updateCallback) this.updateCallback();
   }
 
+  /* Topics Functions */
   getSelectedTopic() {
     const selectedTopicId = this.selections.topics;
     const selectedTopic = this.data.topics.get(selectedTopicId);
@@ -125,6 +126,17 @@ class DataManagerModel implements ModelInterface {
     })
   }
 
+  moveSelectedTopicUp() {
+    const selected = this.getSelectedTopic();
+    this.data.topics.moveElementUp(selected.id);
+  }
+
+  moveSelectedTopicDown() {
+    const selected = this.getSelectedTopic();
+    this.data.topics.moveElementDown(selected.id);
+  }
+
+  /* Headlines Functions */
   getSelectedHeadline() {
     const selectedHeadlineId = this.selections.headlines;
     const selectedHeadline = this.data.headlines.get(selectedHeadlineId);
@@ -154,6 +166,17 @@ class DataManagerModel implements ModelInterface {
     })
   }
 
+  moveSelectedHeadlineUp() {
+    const selected = this.getSelectedHeadline();
+    this.data.headlines.moveElementUp(selected.id);
+  }
+
+  moveSelectedHeadlineDown() {
+    const selected = this.getSelectedHeadline();
+    this.data.headlines.moveElementDown(selected.id);
+  }
+
+  /* Sections Functions */
   getSelectedSection() {
     const selectedSectionId = this.selections.sections;
     const selectedSection = this.data.sections.get(selectedSectionId);
@@ -185,6 +208,16 @@ class DataManagerModel implements ModelInterface {
       headlines: this.selections.headlines,
       sections: -1,
     })
+  }
+
+  moveSelectedSectionUp() {
+    const selected = this.getSelectedSection();
+    this.data.sections.moveElementUp(selected.id);
+  }
+
+  moveSelectedSectionDown() {
+    const selected = this.getSelectedSection();
+    this.data.sections.moveElementDown(selected.id);
   }
 
   clone(): DataManagerModel {
