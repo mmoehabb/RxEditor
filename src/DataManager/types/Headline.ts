@@ -1,5 +1,7 @@
-export default interface Headline {
+type Headline = {
   id: number;
   label: string;
   topicId: number;
 }
+
+export default Headline;

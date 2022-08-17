@@ -1,7 +1,7 @@
-import Headline from "./HeadlineInterface";
-import Section from "./SectionInterface";
-import Selections from "./SelectionsInterface";
-import Topic from "./TopicInterface";
+import Headline from "../types/Headline";
+import Section from "../types/Section";
+import Selections from "../types/Selections";
+import Topic from "../types/Topic";
 
 type DataTypes = Topic | Section | Headline;
 

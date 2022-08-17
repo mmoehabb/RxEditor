@@ -1,6 +1,6 @@
 import DatalistInterface from "../Interfaces/DatalistInterface";
-import Selections from "../Interfaces/SelectionsInterface";
-import Section from "../Interfaces/SectionInterface";
+import Selections from "../types/Selections";
+import Section from "../types/Section";
 
 class Sections extends DatalistInterface<Section> {
   getList() {
