@@ -1,4 +1,4 @@
-const getStyle = (needSaving?: boolean) => ({
+/*
   root: {
     flex: 1,
     height: 'auto',
@@ -11,23 +11,34 @@ const getStyle = (needSaving?: boolean) => ({
     borderRadius: 20,
     boxShadow: '0 0 5px 1px #00000022',
     backgroundColor: '#dfe6e9',
+    overflow: 'auto',
+  },
+*/
+const getStyle = (needSaving?: boolean) => ({
+  root: {
+    display: 'flex',
+    alignSelf: 'center',
+    justifyContent: 'start',
+    height: 'auto',
+    width: '100%',
+    borderRadius: '20px 20px 0 0',
+    boxShadow: '0 0 5px 1px #00000022',
+    backgroundColor: '#f1f1f1',
+    overflow: 'auto',
   },
   btn: {
     width: 'auto',
     padding: '1em',
-    margin: 5,
     border: 0,
     cursor: 'pointer',
-    backgroundColor: '#b2bec3',
     transition: '250ms',
   },
   btnHover: {
-      backgroundColor: '#636e72',
+      backgroundColor: '#00000011',
   },
   saveBtn: {
-    width: '35%',
+    width: 'auto',
     padding: '1em',
-    margin: 5,
     border: 0,
     cursor: 'pointer',
     color: '#f1f1f1',

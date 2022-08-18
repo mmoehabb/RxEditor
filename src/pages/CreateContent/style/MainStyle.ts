@@ -1,5 +1,3 @@
-import mediaQuery from "../../../scripts/mediaQuery";
-
 const getStyle = () => ({
   mainDiv: {
     display: 'flex',
@@ -9,12 +7,11 @@ const getStyle = () => ({
   contentDiv: {
     flex: 1,
     display: 'flex',
-    flexFlow: 'column',
-    justifyContent: mediaQuery('(min-width: 768px)') ? 'space-evenly' : 'start',
+    flexFlow: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
-    width: '70vw',
-    paddingTop: mediaQuery('(min-width: 768px)') ? '' : '5vh',
     backgroundColor: '#f1f1f1',
+    overflow: 'hidden',
   },
 
   exportsDiv: {

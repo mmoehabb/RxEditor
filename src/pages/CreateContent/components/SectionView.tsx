@@ -13,8 +13,21 @@ const SectionView = ({DM}: Props) => {
   
   return (
     <div style={style.secDiv}>
-      
-      <div style={style.labelDiv}>
+
+      <div style={style.topDiv}>
+        <div style={style.labelDiv}>
+          <input 
+            style={style.labelInput}
+            value={DM.getSelectedSection()?.label} 
+            onChange={({target}) => DM.modifySelectedSection(target.value)}
+          />
+          <Button 
+            mainStyle={style.removeBtn()}
+            hoverStyle={style.removeBtn('hover')}
+            label={"X"}
+            onClick={() => DM.removeSelectedSection()}
+          />
+        </div>
 
         <div style={style.sortBtnsDiv}>
           <div style={style.sortBtn}
@@ -27,26 +40,15 @@ const SectionView = ({DM}: Props) => {
             <MdKeyboardArrowDown size="20px" color="#888" />
           </div>
         </div>
-
-        <input 
-          style={style.labelInput} 
-          value={DM.getSelectedSection()?.label} 
-          onChange={({target}) => DM.modifySelectedSection(target.value)}
-        />
-
-        <Button 
-          mainStyle={style.removeBtn()}
-          hoverStyle={style.removeBtn('hover')}
-          label={"X"}
-          onClick={() => DM.removeSelectedSection()}
-        />
       </div>
+      
       <div style={style.editorContainer}>
         <TextEditor 
           content={DM.getSelectedSection()?.content}
           updateContent={(c) => DM.modifySelectedSectionContent(c)}
         />
       </div>
+      
     </div>
   );
 }

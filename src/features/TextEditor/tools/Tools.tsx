@@ -18,7 +18,7 @@ const ButtonsContainer = (props: Props) => {
             onClick={() => props.btnWrapper(btn.func)}
             mainStyle={style.btn} 
             hoverStyle={style.btnHover}>
-                <btn.img size={25} color='#fff' />
+                <btn.img size={25} color='#666' />
             </Button>
         )}
 

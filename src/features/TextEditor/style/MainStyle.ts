@@ -1,5 +1,3 @@
-import mediaQuery from "../../../scripts/mediaQuery";
-
 interface Props {
   width?: string | number;
   height?: string | number;
@@ -10,10 +8,9 @@ const getStyle = (props: Props, saved: boolean) => ({
   mainDiv: !props.viewMode ? 
   {
     display: 'flex',
-    flexFlow: mediaQuery('(min-width: 768px)') ? 'row' : 'column',
+    flexFlow: 'column-reverse',
     width: props.width || '100%',
     height: props.height || '100%',
-    padding: 10,
   } : {},
 
   contentDiv: !props.viewMode ? 
@@ -26,7 +23,7 @@ const getStyle = (props: Props, saved: boolean) => ({
     color: '#383838',
     backgroundColor: '#f6f6f6',
     borderBottom: `solid ${saved ? '#00b894' : '#ff7675'} 2px`,
-    borderRadius: 20,
+    borderRadius: '0 0 20px 20px',
   } : {}
 })
 

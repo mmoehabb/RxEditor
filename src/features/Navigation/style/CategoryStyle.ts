@@ -6,6 +6,10 @@ const getStyle = () => ({
   },
 
   title: {
+      display: 'flex',
+      flexFlow: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
       margin: '10px 0',
       borderBottom: 'solid #fff 2px',
       fontSize: '1em',
@@ -16,9 +20,10 @@ const getStyle = () => ({
 
   addBtn: {
       height: '100%',
-      fontSize: '1em',
+      fontSize: '1.25em',
       float: 'right',
       border: 0,
+      padding: 4,
       color: 'inherit',
       backgroundColor: '#ffffff22',
       cursor: 'pointer',

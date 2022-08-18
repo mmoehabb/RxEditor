@@ -50,7 +50,7 @@ const CategoryGroup = ({dataManager, category, viewMode}: Props) => {
     return (
         <div style={style.root}>
             <div style={style.title}>
-                {category.toUpperCase()}
+                <label>{category.toUpperCase()}</label>
                 {viewMode ||
                     <Button 
                         label={"+"} 

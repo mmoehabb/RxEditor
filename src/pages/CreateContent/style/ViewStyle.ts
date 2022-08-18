@@ -1,34 +1,40 @@
-import mediaQuery from "../../../scripts/mediaQuery";
-
 const getStyle = () => ({
   secDiv: {
       display: 'flex', 
       flexFlow: 'column',
+      justifyContent: 'space-evenly',
+      alignItems: 'center',
       width: '100%',
       height: '100%',
-      padding: 20,
       boxSizing: 'border-box' as 'border-box',
       overflow: 'hidden',
   },
 
+  topDiv: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '90%',
+  },
+
   labelDiv: {
+      flex: 9,
       display: "flex",
       flexFlow: "row",
       justifyContent: 'center',
-      width: mediaQuery('(min-width: 768px)') ? '80%' : '100%',
+      alignSelf: 'center',
+      borderRadius: 20,
+      boxSizing: 'border-box' as 'border-box',
+      boxShadow: '0 0 10px 2px #00000022',
       overflow: 'hidden',
   },
 
   labelInput: {
+      flex: 8,
       textAlign: 'center' as 'center',
       fontSize: '1em',
       fontWeight: 'bold',
-      width: '80%',
-      margin: 15,
       padding: 15,
-      borderRadius: 25,
       border: 0,
-      boxShadow: '0 0 10px 2px #00000022',
       color: '#666',
       backgroundColor: '#f6f6f6',
   },
@@ -38,11 +44,10 @@ const getStyle = () => ({
           boxShadow: '0 0 5px 2px #00000033'
       })
       else return ({
-          padding: '10px 20px',
-          margin: 20,
+          flex: 1,
           fontSize: '1em',
+          padding: 10,
           border: 0,
-          borderRadius: 5,
           color: '#f1f1f1',
           backgroundColor: '#c0392b',
           cursor: 'pointer',
@@ -51,10 +56,11 @@ const getStyle = () => ({
   },
 
   sortBtnsDiv: {
+    flex: 1,
     display: 'flex',
     flexFlow: 'column',
     justifyContent: 'center',
-    padding: 10,
+    alignItems: 'center',
   },
 
   sortBtn: {
@@ -62,7 +68,9 @@ const getStyle = () => ({
   },
 
   editorContainer: {
-    height: '85%',
+    height: '80%',
+    width: '90%',
+    alignSelf: 'center',
   }, 
 });
 

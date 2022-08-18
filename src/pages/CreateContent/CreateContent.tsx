@@ -30,7 +30,7 @@ const CreateContent = () => {
         setNavVisibility(true);
     }
     const hideNav = () => {
-        if (mediaQuery('(max-width: 768px)'))
+        if (mediaQuery('(max-width: 1024px)'))
             setNavVisibility(false);
     }
 

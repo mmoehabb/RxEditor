@@ -2,7 +2,6 @@ import { ReactElement } from "react";
 
 import CategoryGroup from "./components/CategoryGroup";
 import DataManagerModel from "../../DataManager/StrategyModel/Model";
-import NavBtnImg from "../../media/navBtn.svg";
 import getStyle from "./style/MainStyle";
 
 
@@ -25,12 +24,10 @@ const Navigation = (props: Props) => {
     <>
     {
       props.hidden ?
-      <img 
+      <div 
           style={style.showBtn} 
-          src={NavBtnImg} 
-          alt=""
           onClick={showBtnHandler}
-      />
+      ></div>
       :
       <div style={style.root}>
           {["topics", "headlines", "sections"].map((cat,i) => 

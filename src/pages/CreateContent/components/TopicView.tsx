@@ -11,7 +11,22 @@ const TopicView = ({DM}: Props) => {
   const style = getStyle();
 
   return (
-    <div style={style.labelDiv}>
+    <div style={style.topDiv}>
+      <div style={style.labelDiv}>
+        <input 
+          style={style.labelInput} 
+          value={DM.getSelectedTopic()?.label}
+          onChange={({target}) => DM.modifySelectedTopic(target.value)}
+        />
+
+        <Button 
+          mainStyle={style.removeBtn()}
+          hoverStyle={style.removeBtn('hover')}
+          label={"X"}
+          onClick={() => DM.removeSelectedTopic()}
+        />
+      </div>
+      
       <div style={style.sortBtnsDiv}>
         <div style={style.sortBtn}
         onClick={() => DM.moveSelectedTopicUp()}>
@@ -23,19 +38,6 @@ const TopicView = ({DM}: Props) => {
           <MdKeyboardArrowDown size="20px" color="#888" />
         </div>
       </div>
-      
-      <input 
-        style={style.labelInput} 
-        value={DM.getSelectedTopic()?.label}
-        onChange={({target}) => DM.modifySelectedTopic(target.value)}
-      />
-
-      <Button 
-        mainStyle={style.removeBtn()}
-        hoverStyle={style.removeBtn('hover')}
-        label={"X"}
-        onClick={() => DM.removeSelectedTopic()}
-      />
     </div>
   );
 }

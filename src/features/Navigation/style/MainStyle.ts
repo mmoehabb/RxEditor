@@ -6,24 +6,24 @@ const getStyle = () => ({
     flexFlow: 'column',
     justifyContent: 'space-between',
     
-    width: '15em',
+    width: mediaQuery('(min-width: 1024px)') ? '20%' : '20em',
     height: '100vh',
-    padding: 10,
-    
+    padding: 15,
     boxSizing: 'border-box' as 'border-box',
     color: '#f6f6f6',
     background: 'linear-gradient(#3BAFB7, #4EAED7)',
     overflow: 'auto',
 
-    position: (mediaQuery('(min-width: 768px)') ? '' : 'absolute') as 'absolute',
+    position: (mediaQuery('(min-width: 1024px)') ? '' : 'absolute') as 'absolute',
   },
 
   showBtn: {
     position: 'absolute' as 'absolute',
-    width: 70,
-    left: -40,
-    top: '45%',
+    width: 50,
+    height: 50,
+    borderRadius: '0 0 45px 0',
     cursor: 'pointer',
+    backgroundColor: '#3BAFB7',
   },
 
   children: {
