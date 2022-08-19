@@ -30,19 +30,19 @@ const TextEditor = (props: Props) => {
     const onContentChange = () => {
         setSaved(!needSaving());
     }
-    
+
     const onEditorFocus = () => {
         // set saveing event
-        window.addEventListener('keydown', (e) => {
+        window.onkeydown = (e) => {
             if (e.ctrlKey && e.code === 'KeyS') {
                 e.preventDefault();
                 saveChanges();
             }
-        });
+        }
     }
 
     const onEditorBlur = () => {
-        window.onkeydown = null;  
+        window.onkeydown = () => {};
     }
 
     // Wrapper function for ensuring that the selected text is in the 
