@@ -10,6 +10,9 @@ const exportAsPDF = (dm: DataManagerModel) => {
   myWindow.document.write('<html>')
     myWindow.document.write('<head>')
       myWindow.document.write('<style>')
+        myWindow.document.write(`html {
+          direction: ${dm.getData().metadata.direction};
+        }`);
         myWindow.document.write(contentStyle);
       myWindow.document.write('</style>')
     myWindow.document.write('</head>')

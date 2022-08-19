@@ -30,7 +30,6 @@ const style = `
 
   note {
     display: block;
-    text-align: left;
     padding: 25px;
     margin: 25px;
     border-radius: 0 20px 0 20px;

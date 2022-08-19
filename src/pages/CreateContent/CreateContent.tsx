@@ -18,9 +18,9 @@ import exportAsPDF from "../../features/Exports/exportAsPDF"
 
 
 const CreateContent = () => {
-    const style = getStyle();
-    
     const DM = useDataManager();
+    console.log(DM.getData().metadata.direction)
+    const style = getStyle(DM.getData().metadata.direction);
 
     const [navVisibility, setNavVisibility] = useState(true);
     const [firstRender, setFirstRender] = useState(true);
@@ -41,6 +41,16 @@ const CreateContent = () => {
     // Load json file, if a fileURL is given in window.location
     if (firstRender) {
         loadFromHeader(DM, 'fileURL');
+        window.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.code === 'ShiftLeft') {
+                e.preventDefault();
+                DM.setMetadata({direction: 'ltr'});
+            }
+            if (e.ctrlKey && e.code === 'ShiftRight') {
+                e.preventDefault();
+                DM.setMetadata({direction: 'rtl'});
+            }
+        });
         setFirstRender(false);
     }
     

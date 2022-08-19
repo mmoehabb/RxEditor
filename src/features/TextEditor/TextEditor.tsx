@@ -32,12 +32,13 @@ const TextEditor = (props: Props) => {
     }
     
     const onEditorFocus = () => {
-        window.onkeydown = (e) => {
+        // set saveing event
+        window.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.code === 'KeyS') {
                 e.preventDefault();
                 saveChanges();
             }
-        }
+        });
     }
 
     const onEditorBlur = () => {

@@ -1,7 +1,8 @@
-const getStyle = () => ({
+const getStyle = (direction?: string) => ({
   mainDiv: {
     display: 'flex',
     height: '100vh',
+    direction: (direction ? direction : 'ltr') as 'ltr',
   },
 
   contentDiv: {

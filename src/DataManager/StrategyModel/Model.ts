@@ -4,7 +4,7 @@ import Headlines from "../Datalist/lists/Headlines";
 import Sections from "../Datalist/lists/Sections";
 
 import { abstractNode, getNodeFromAbstract } from "../Functions/ContentManipulation";
-import ModelInterface, { Data, JSONData } from "./ModelInterface";
+import ModelInterface, { Data, JSONData, metadata } from "./ModelInterface";
 
 class DataManagerModel implements ModelInterface {
   private data: Data;
@@ -15,6 +15,7 @@ class DataManagerModel implements ModelInterface {
     this.updateCallback = updateCallback;
 
     this.data ={
+      metadata: data?.metadata || {direction: 'ltr'},
       topics: data?.topics || new Topics(),
       headlines: data?.headlines || new Headlines(),
       sections: data?.sections || new Sections(),
@@ -64,6 +65,7 @@ class DataManagerModel implements ModelInterface {
   }
 
   loadDataFromJSON(jsonData: JSONData) {
+    Object.assign(this.data.metadata, jsonData.metadata);
     this.data.topics.setList(jsonData.topics.list)
     this.data.headlines.setList(jsonData.headlines.list)
 
@@ -81,6 +83,17 @@ class DataManagerModel implements ModelInterface {
     }
 
     this.data.sections.setList(sectionsList);
+    if (this.updateCallback) this.updateCallback();
+  }
+
+  getMetadata() {
+    const meta = {};
+    Object.assign(meta, this.data.metadata);
+    return meta as metadata;
+  }
+
+  setMetadata(newmeta: Partial<metadata>) {
+    Object.assign(this.data.metadata, newmeta);
     if (this.updateCallback) this.updateCallback();
   }
 

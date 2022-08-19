@@ -17,6 +17,10 @@ div, p {
   text-align: justify;
 }
 
+ol, ul {
+  margin: 0 45px;
+}
+
 code {
   display: block;
   padding: 25px;
@@ -29,7 +33,6 @@ code {
 
 note {
   display: block;
-  text-align: left;
   padding: 25px;
   margin: 25px;
   border-radius: 0 20px 0 20px;
