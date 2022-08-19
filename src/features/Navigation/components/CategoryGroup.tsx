@@ -28,7 +28,7 @@ const CategoryGroup = ({dataManager, category, viewMode}: Props) => {
     }
 
     const onSelect = (id: number) => {
-        const newSel = {...dataManager.getSelections()};
+        const newSel = dataManager.getSelections();
         newSel[category] = id;
 
         if (category === "topics") {
