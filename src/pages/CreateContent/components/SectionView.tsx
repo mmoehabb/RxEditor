@@ -12,6 +12,7 @@ const SectionView = ({DM}: Props) => {
   const style = getStyle();
   
   return (
+    DM.getSelectedSection() ?
     <div style={style.secDiv}>
 
       <div style={style.topDiv}>
@@ -28,7 +29,6 @@ const SectionView = ({DM}: Props) => {
             onClick={() => DM.removeSelectedSection()}
           />
         </div>
-
         <div style={style.sortBtnsDiv}>
           <div style={style.sortBtn}
           onClick={() => DM.moveSelectedSectionUp()}>
@@ -48,7 +48,11 @@ const SectionView = ({DM}: Props) => {
           updateContent={(c) => DM.modifySelectedSectionContent(c)}
         />
       </div>
-      
+
+    </div>
+    :
+    <div>
+      No section is selected
     </div>
   );
 }

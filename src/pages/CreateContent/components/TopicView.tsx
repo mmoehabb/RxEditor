@@ -11,6 +11,7 @@ const TopicView = ({DM}: Props) => {
   const style = getStyle();
 
   return (
+    DM.getSelectedTopic() ?
     <div style={style.topDiv}>
       <div style={style.labelDiv}>
         <input 
@@ -38,6 +39,10 @@ const TopicView = ({DM}: Props) => {
           <MdKeyboardArrowDown size="20px" color="#888" />
         </div>
       </div>
+    </div>
+    :
+    <div>
+      No topic is selected
     </div>
   );
 }

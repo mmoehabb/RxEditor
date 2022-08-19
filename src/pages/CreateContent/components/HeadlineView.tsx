@@ -12,6 +12,7 @@ const HeadlineView = ({DM}: Props) => {
   const style = getStyle();
 
   return (
+    DM.getSelectedHeadline() ?
     <div style={style.topDiv}>
       <div style={style.labelDiv}>
         <input 
@@ -39,6 +40,10 @@ const HeadlineView = ({DM}: Props) => {
             <MdKeyboardArrowDown size="20px" color="#888" />
           </div>
         </div>
+    </div>
+    :
+    <div>
+      No headline is selected
     </div>
   );
 }
