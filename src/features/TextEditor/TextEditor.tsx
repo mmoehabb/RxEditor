@@ -33,7 +33,7 @@ const TextEditor = (props: Props) => {
     
     const onEditorFocus = () => {
         window.onkeydown = (e) => {
-            if (e.ctrlKey && e.key === 's') {
+            if (e.ctrlKey && e.code === 'KeyS') {
                 e.preventDefault();
                 saveChanges();
             }
