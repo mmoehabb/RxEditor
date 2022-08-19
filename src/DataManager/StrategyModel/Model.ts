@@ -126,7 +126,7 @@ class DataManagerModel implements ModelInterface {
   removeSelectedTopic() {
     const {topics, headlines, sections} = this.data;
 
-    topics.remove(this.selections.topics);
+    topics.remove(this.selections.topics, true);
     headlines.filter(this.selections).forEach((headline) => {
         headlines.remove(headline.id);
         sections.filter({...this.selections, headlines: headline.id})
@@ -169,7 +169,7 @@ class DataManagerModel implements ModelInterface {
   removeSelectedHeadline() {
     const {headlines, sections} = this.data;
 
-    headlines.remove(this.selections.headlines);
+    headlines.remove(this.selections.headlines, true);
     sections.filter(this.selections).forEach(
       (section) => sections.remove(section.id)
     );
@@ -202,7 +202,6 @@ class DataManagerModel implements ModelInterface {
     const sectionId = this.selections.sections;
     const {sections} = this.data;
     sections.modify(sectionId, {label});
-
     if (this.updateCallback) this.updateCallback();
   }
 
@@ -210,14 +209,13 @@ class DataManagerModel implements ModelInterface {
     const sectionId = this.selections.sections;
     const {sections} = this.data;
     sections.modify(sectionId, {content});
-
     if (this.updateCallback) this.updateCallback();
   }
 
   removeSelectedSection() {
     const {sections} = this.data;
-    sections.remove(this.selections.sections);
-
+    sections.remove(this.selections.sections, true);
+    
     this.setSelections({
       topics: this.selections.topics,
       headlines: this.selections.headlines,
