@@ -98,11 +98,13 @@ class DataManagerModel implements ModelInterface {
   }
 
   getSelections() {
-    return this.selections;
+    const obj = {}
+    Object.assign(obj, this.selections);
+    return obj as Selections;
   }
 
   setSelections(newSelections: Selections) {
-    this.selections = {...newSelections};
+    Object.assign(this.selections, newSelections);
     if (this.updateCallback) this.updateCallback();
   }
 
