@@ -10,11 +10,9 @@ interface Props {
 
 const SectionView = ({DM}: Props) => {
   const style = getStyle();
-  
-  return (
-    DM.getSelectedSection() ?
-    <div style={style.secDiv}>
 
+  return (
+    <div style={style.secDiv}>
       <div style={style.topDiv}>
         <div style={style.labelDiv}>
           <input 
@@ -48,11 +46,6 @@ const SectionView = ({DM}: Props) => {
           updateContent={(c) => DM.modifySelectedSectionContent(c)}
         />
       </div>
-
-    </div>
-    :
-    <div>
-      No section is selected
     </div>
   );
 }
