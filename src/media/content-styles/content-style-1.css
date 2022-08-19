@@ -1,24 +1,26 @@
-body {
-  font-family: sans-serif;
-  color: #444;
-}
-
 h1 {
   color: #222;
   padding: 10px;
+  margin: 20px 0 10px 0;
   border-bottom: solid 2px #444;
 }
 
 h2, h3 {
   color: #333;
+  margin: 15px 0 5px 0;
 }
 
-div, p {
+#TextEditorDiv > div, p {
+  margin: 20px 0;
   text-align: justify;
 }
 
 ol, ul {
   margin: 0 45px;
+}
+
+li {
+  margin: 10px 0;
 }
 
 code {
@@ -38,3 +40,4 @@ note {
   border-radius: 0 20px 0 20px;
   background-color:#eaeaea;
 }
+

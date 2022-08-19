@@ -1,40 +1,56 @@
 const style = `
-  body {
-    font-family: sans-serif;
-    color: #444;
-  }
+* {
+  margin: 0;
+  padding: 0;
+}
 
-  h1 {
-    color: #222;
-    padding: 10px;
-    border-bottom: solid 2px #444;
-  }
+body {
+  font-family: sans-serif;
+  color: #444;
+}
 
-  h2, h3 {
-    color: #333;
-  }
+h1 {
+  color: #222;
+  padding: 0 10px;
+  margin: 20px 0 10px 0;
+  border-bottom: solid 2px #444;
+}
 
-  div, p {
-    text-align: justify;
-  }
+h2, h3 {
+  color: #333;
+  margin: 15px 0 5px 0;
+}
 
-  code {
-    display: block;
-    padding: 25px;
-    margin: 25px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 2px #00000011;
-    color: #eee;
-    background-color:#333;
-  }
+div, p {
+  margin: 20px 0;
+  text-align: justify;
+}
 
-  note {
-    display: block;
-    padding: 25px;
-    margin: 25px;
-    border-radius: 0 20px 0 20px;
-    background-color:#eaeaea;
-  }
+ol, ul {
+  margin: 0 45px;
+}
+
+li {
+  margin: 10px 0;
+}
+
+code {
+  display: block;
+  padding: 25px;
+  margin: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 2px #00000011;
+  color: #eee;
+  background-color:#333;
+}
+
+note {
+  display: block;
+  padding: 25px;
+  margin: 25px;
+  border-radius: 0 20px 0 20px;
+  background-color:#eaeaea;
+}
 `
 
 export default style;
