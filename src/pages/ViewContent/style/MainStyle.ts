@@ -1,8 +1,9 @@
-const getStyle = () => ({
+const getStyle = (dir: 'ltr' | 'rtl') => ({
   mainDiv: {
       display: 'flex',
       height: '100vh',
       overflow: 'hidden',
+      direction: dir,
   },
 
   contentDiv: {

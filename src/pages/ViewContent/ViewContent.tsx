@@ -9,9 +9,9 @@ import TextEditor from "../../features/TextEditor/TextEditor";
 import Navigation from "../../features/Navigation/Navigation";
 
 const ViewContent = () => {
-    const style = getStyle();
-
     const DM = useDataManager();
+
+    const style = getStyle(DM.getMetadata().direction);
 
     const [navVisibility, setNavVisibility] = useState(true);
     const [firstRender, setFirstRender] = useState(true);
