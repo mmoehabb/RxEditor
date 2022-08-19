@@ -1,6 +1,6 @@
 import mediaQuery from "../../../scripts/mediaQuery";
 
-const getStyle = () => ({
+const getStyle = (dir: 'ltr' | 'rtl') => ({
   root: {
     display: 'flex',
     flexFlow: 'column',
@@ -21,7 +21,7 @@ const getStyle = () => ({
     position: 'absolute' as 'absolute',
     width: 50,
     height: 50,
-    borderRadius: '0 0 45px 0',
+    borderRadius: dir === 'rtl' ? '0 0 0 45px' : '0 0 45px 0',
     cursor: 'pointer',
     backgroundColor: '#3BAFB7',
   },

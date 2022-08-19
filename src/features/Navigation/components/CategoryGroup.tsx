@@ -10,7 +10,7 @@ interface Props {
 }
 
 const CategoryGroup = ({dataManager, category, viewMode}: Props) => {
-    const style = getStyle();
+    const style = getStyle(dataManager.getMetadata().direction);
     const dataList = dataManager.getData()[category];
     const collection = dataList.filter(dataManager.getSelections());
     const selectedItemId = dataManager.getSelections()[category];

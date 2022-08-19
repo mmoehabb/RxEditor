@@ -1,4 +1,4 @@
-const getStyle = () => ({
+const getStyle = (dir: 'ltr' | 'rtl') => ({
   root: {
       display: 'flex',
       flexFlow: 'column',
@@ -14,7 +14,7 @@ const getStyle = () => ({
       borderBottom: 'solid #fff 2px',
       fontSize: '1em',
       color: '#fff',
-      borderRadius: '0 10px 0 0',
+      borderRadius: dir === 'ltr' ? '0 10px 0 0' : '10px 0 0 0',
       overflow: 'hidden',
   },
 
@@ -34,9 +34,10 @@ const getStyle = () => ({
           width: '100%',
           padding: '5px 20px',
           marginBottom: 5,
-          textAlign: 'left',
+          textAlign: 'inherit',
           border: 0,
           borderLeft: 0,
+          borderRight: 0,
           borderRadius: 10,
           boxShadow: '0 0 5px 1px #00000022',
           color: '#fff',
@@ -49,10 +50,10 @@ const getStyle = () => ({
           backgroundColor: '#f1f2f6',
       },
       selected: {
-          color: '#0abde3',
+          color: '#01a3a4',
           backgroundColor: '#f1f2f6',
-          border: 0,
-          borderLeft: 'solid #01a3a4 15px',
+          borderLeft: dir === 'ltr' ? 'solid #01a3a4 15px' : 0,
+          borderRight: dir === 'rtl' ? 'solid #01a3a4 15px' : 0,
       },
   },
 })

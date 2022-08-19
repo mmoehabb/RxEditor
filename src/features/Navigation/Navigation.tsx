@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Navigation = (props: Props) => {
-  const style = getStyle();
+  const style = getStyle(props.DM.getMetadata().direction);
 
   const showBtnHandler = () => {
     if (props.onShow) props.onShow();
