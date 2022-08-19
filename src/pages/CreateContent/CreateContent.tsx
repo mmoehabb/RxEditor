@@ -19,7 +19,7 @@ import exportAsPDF from "../../features/Exports/exportAsPDF"
 
 const CreateContent = () => {
     const DM = useDataManager();
-    console.log(DM.getData().metadata.direction)
+
     const style = getStyle(DM.getData().metadata.direction);
 
     const [navVisibility, setNavVisibility] = useState(true);
@@ -36,6 +36,9 @@ const CreateContent = () => {
 
     const showExportsBtns = () => {
         setExportsAnim(SlideInDown);
+    }
+    const hideExportsBtns = () => {
+        setExportsAnim(SlideOutDown)
     }
 
     // Load json file, if a fileURL is given in window.location
@@ -98,7 +101,7 @@ const CreateContent = () => {
                     mainStyle={style.exportBtn('#000000').default} 
                     hoverStyle={style.exportBtn('').hover}
                     label={"Close"} 
-                    onClick={() => setExportsAnim(SlideOutDown)}
+                    onClick={() => hideExportsBtns()}
                 /> 
             </ExportsDiv>
         </div>
