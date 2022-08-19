@@ -20,6 +20,7 @@ abstract class DatalistInterface<T extends DataTypes> {
   getList() {
     return Array.from(this.list);
   }
+  
   setList(newList: Array<T>) {
     this.list = newList;
     this.dispatchUpdate();
@@ -29,10 +30,10 @@ abstract class DatalistInterface<T extends DataTypes> {
     return this.list.filter((elem) => elem.id === id)[0];
   }
 
-  remove(id: number) {
+  remove(id: number, disableUpdate?: boolean) {
     const newList = this.list.filter((elem) => elem.id !== id);
     this.list = newList;
-    this.dispatchUpdate();
+    if (!disableUpdate) this.dispatchUpdate();
   }
 
   modify(id: number, changes: object) {
@@ -77,7 +78,7 @@ abstract class DatalistInterface<T extends DataTypes> {
   }
 
   // unstable functions
-  add(selections?: Selections){};
+  add(selections: Selections){};
   filter(selections: Selections){};
 
   // invoke the updateCallback for the user...
