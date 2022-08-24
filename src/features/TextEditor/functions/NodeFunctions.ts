@@ -31,11 +31,11 @@ const removeSurroundingFrom = (element: Node) => {
     oldNode.replaceWith(newNode);
 }
 
-const getContainer = () => {
+const getStartContainer = () => {
     const range = getRange();
     if (!range) return null;
 
-    let element = range.commonAncestorContainer as HTMLElement;
+    let element = range.startContainer as HTMLElement;
     if (!element) return null;
 
     const parent = element.parentElement;
@@ -43,8 +43,32 @@ const getContainer = () => {
 
     if (element.nodeName === "#text" && parent.id === "TextEditorDiv")
         element = surroundWithTag("div");
-    else if (parent.id !== "TextEditorDiv")
-        element = parent;
+    
+    while (element.parentElement?.id !== "TextEditorDiv") {
+        if (element.parentElement) 
+            element = element.parentElement;
+    }
+
+    return element;
+}
+
+const getEndContainer = () => {
+    const range = getRange();
+    if (!range) return null;
+
+    let element = range.endContainer as HTMLElement;
+    if (!element) return null;
+
+    const parent = element.parentElement;
+    if (!parent) return null;
+
+    if (element.nodeName === "#text" && parent.id === "TextEditorDiv")
+        element = surroundWithTag("div");
+
+    while (element.parentElement?.id !== "TextEditorDiv") {
+        if (element.parentElement) 
+            element = element.parentElement;
+    }
     
     return element;
 }
@@ -100,59 +124,87 @@ export const addTagWithAttributes = (tag: string, attributes:Array<string>) => {
 }
 
 
-export const modifyStyle = (newstyle?: string) => {
-    let element = getContainer();
-    if (!element) return;
+export const modifyStyle = (newstyle?: string, elem1?: HTMLElement, elem2?: HTMLElement) => {
+    let startElement = elem1 || getStartContainer();
+    if (!startElement) return;
+    let endElement = elem2 || getEndContainer();
+    if (!endElement) return;
     
     if (!newstyle) {
-        addAttributesTo(element, ["style"]);
-        return;
-    }
-
-    let counter = 0;
-    while (element.id !== "TextEditorDiv") {
-        element.setAttribute("style", newstyle);
-        if (element.parentElement) 
-            element = element.parentElement;
-        if (++counter > 10)
-            return; 
-    }
-}
-
-export const addStyle = (newstyle?: string, elem?: HTMLElement) => {
-    let element = elem || getContainer();
-    if (!element) return;
-    
-    if (!newstyle) {
-        console.log("test")
         getUserInput("Input CSS:", 
-            value => element && addStyle(value, element)
+            value => 
+                startElement && 
+                endElement && 
+                modifyStyle(value, startElement, endElement)
         );
         return;
     }
 
-    let counter = 0;
-    while (element.parentElement?.id !== "TextEditorDiv") {
-        if (element.parentElement) 
-            element = element.parentElement;
-        if (++counter > 10)
-            return; 
+    if (startElement === endElement) {
+        startElement.setAttribute("style", newstyle);
+        return;
     }
-    element.setAttribute("style", element.getAttribute("style") + (newstyle || ""));
+
+    let el = startElement
+    while (el !== endElement) {
+        el.setAttribute("style", newstyle);
+        if (el.nextElementSibling) 
+            el = el.nextElementSibling as HTMLElement;
+    }
+    el.setAttribute("style", newstyle);
+}
+
+export const addStyle = (newstyle?: string, elem1?: HTMLElement, elem2?: HTMLElement) => {
+    let startElement = elem1 || getStartContainer();
+    if (!startElement) return;
+    let endElement = elem2 || getEndContainer();
+    if (!endElement) return;
+    
+    if (!newstyle) {
+        getUserInput("Input CSS:", 
+            value => 
+                startElement && 
+                endElement && 
+                addStyle(value, startElement, endElement)
+        );
+        return;
+    }
+
+    if (startElement === endElement) {
+        startElement.setAttribute(
+            "style", 
+            startElement.getAttribute("style") + (newstyle || "")
+        );
+        return;
+    }
+
+    let el = startElement
+    while (el !== endElement) {
+        el.setAttribute("style", el.getAttribute("style") + (newstyle || ""));
+        if (el.nextElementSibling) 
+            el = el.nextElementSibling as HTMLElement;
+    }
+    el.setAttribute("style", el.getAttribute("style") + (newstyle || ""));
 }
 
 export const setStyle = (attr: string, value: string) => {
-    let element = getContainer();
-    if (!element) return;
+    let startElement = getStartContainer();
+    if (!startElement) return;
+    let endElement = getEndContainer();
+    if (!endElement) return;
 
-    let counter = 0;
-    while (element.parentElement?.id !== "TextEditorDiv") {
-        if (element.parentElement) 
-            element = element.parentElement;
-        if (++counter > 10)
-            return; 
+    if (startElement === endElement) {
+        startElement.style[attr as any] = value;
+        return;
     }
-    element.style[attr as any] = value;
+
+    let el = startElement
+    while (el !== endElement) {
+        el.style[attr as any] = value;
+        if (el.nextElementSibling) 
+            el = el.nextElementSibling as HTMLElement;
+    }
+    el.style[attr as any] = value;
 }
 
 
