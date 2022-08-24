@@ -31,6 +31,24 @@ const removeSurroundingFrom = (element: Node) => {
     oldNode.replaceWith(newNode);
 }
 
+const getContainer = () => {
+    const range = getRange();
+    if (!range) return null;
+
+    let element = range.commonAncestorContainer as HTMLElement;
+    if (!element) return null;
+
+    const parent = element.parentElement;
+    if (!parent) return null;
+
+    if (element.nodeName === "#text" && parent.id === "TextEditorDiv")
+        element = surroundWithTag("div");
+    else if (parent.id !== "TextEditorDiv")
+        element = parent;
+    
+    return element;
+}
+
 // Add new node to the editor. Either by inserting or surrounding.
 export const add = (tag: string, content?:string, surrounding?: boolean, range?: Range) => {
 	try {
@@ -68,17 +86,73 @@ export const addTagWithAttributes = (tag: string, attributes:Array<string>) => {
     if (tag === "") {
 		getUserInput(`Enter Node name value:`, 
 			(tag) => {
-				const addedElement = add(tag, "Empty", true, range);
+				const addedElement = add(tag, "Empty", false, range);
 				if (addedElement)
 					addAttributesTo(addedElement, attributes)
 			}
 		);
 	}
 	else {
-		const addedElement = add(tag, "Empty", true, range);
+		const addedElement = add(tag, "Empty", false, range);
 		if (addedElement)
 			addAttributesTo(addedElement, attributes)
 	}
+}
+
+
+export const modifyStyle = (newstyle?: string) => {
+    let element = getContainer();
+    if (!element) return;
+    
+    if (!newstyle) {
+        addAttributesTo(element, ["style"]);
+        return;
+    }
+
+    let counter = 0;
+    while (element.id !== "TextEditorDiv") {
+        element.setAttribute("style", newstyle);
+        if (element.parentElement) 
+            element = element.parentElement;
+        if (++counter > 10)
+            return; 
+    }
+}
+
+export const addStyle = (newstyle?: string, elem?: HTMLElement) => {
+    let element = elem || getContainer();
+    if (!element) return;
+    
+    if (!newstyle) {
+        console.log("test")
+        getUserInput("Input CSS:", 
+            value => element && addStyle(value, element)
+        );
+        return;
+    }
+
+    let counter = 0;
+    while (element.parentElement?.id !== "TextEditorDiv") {
+        if (element.parentElement) 
+            element = element.parentElement;
+        if (++counter > 10)
+            return; 
+    }
+    element.setAttribute("style", element.getAttribute("style") + (newstyle || ""));
+}
+
+export const setStyle = (attr: string, value: string) => {
+    let element = getContainer();
+    if (!element) return;
+
+    let counter = 0;
+    while (element.parentElement?.id !== "TextEditorDiv") {
+        if (element.parentElement) 
+            element = element.parentElement;
+        if (++counter > 10)
+            return; 
+    }
+    element.style[attr as any] = value;
 }
 
 
