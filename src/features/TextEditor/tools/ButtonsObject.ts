@@ -10,15 +10,25 @@ import {
   BsCodeSlash
 } from "react-icons/bs";
 
-import { FaHeading } from "react-icons/fa"
+import { 
+  FaAlignCenter, 
+  FaAlignJustify, 
+  FaAlignLeft, 
+  FaAlignRight, 
+  FaHeading, 
+  FaRemoveFormat 
+} from "react-icons/fa"
+
 import { 
   RiHeading, 
   RiDoubleQuotesR 
 } from "react-icons/ri"
+
 import { CgFormatHeading } from "react-icons/cg"
 import { VscNote } from "react-icons/vsc"
+import { AiFillFormatPainter, AiOutlineFormatPainter } from "react-icons/ai"
 
-import { add, addTagWithAttributes } from "../functions/NodeFunctions";
+import { add, addStyle, addTagWithAttributes, modifyStyle, setStyle } from "../functions/NodeFunctions";
 
 export const buttonsData = [
   {
@@ -73,8 +83,43 @@ export const buttonsData = [
     func:() => addTagWithAttributes("img", ["src", "width", "height"]),
     img: BsImage  
   },
+  // text-align: left
+  {
+    func:() => setStyle("textAlign", "left"),
+    img: FaAlignLeft
+  },
+  // text-align: center
+  {
+    func:() => setStyle("textAlign", "center"),
+    img: FaAlignCenter
+  },
+  // text-align: right
+  {
+    func:() => setStyle("textAlign", "right"),
+    img: FaAlignRight
+  },
+  // text-align: justify
+  {
+    func:() => setStyle("textAlign", "justify"),
+    img: FaAlignJustify
+  },
+  // remove styles
+  {
+    func:() => modifyStyle("opacity: 1;"),
+    img: FaRemoveFormat
+  },
+  // override custome style
+  {
+    func:() => modifyStyle(),
+    img: AiFillFormatPainter
+  },
+  // add custome style
+  {
+    func:() => addStyle(""),
+    img: AiOutlineFormatPainter
+  },
   {
     func:() => addTagWithAttributes("", []),
-    img: BsPlusSquareDotted 
+    img: BsPlusSquareDotted
   }
 ]
