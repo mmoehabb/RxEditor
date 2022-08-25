@@ -6,7 +6,8 @@ const exportAsPDF = (dm: DataManagerModel) => {
   const myWindow = window.open('', 'PRINT');
   if (!myWindow) return;
 
-  const div = getContent(dm);
+  const divs = getContent(dm);
+  myWindow.document.write('<!DOCTYPE HTML>')
   myWindow.document.write('<html>')
     myWindow.document.write('<head>')
       myWindow.document.write('<style>')
@@ -17,7 +18,7 @@ const exportAsPDF = (dm: DataManagerModel) => {
       myWindow.document.write('</style>')
     myWindow.document.write('</head>')
     myWindow.document.write('<body>')
-      myWindow.document.write(div.innerHTML);
+      divs.forEach(div => myWindow.document.write(div.innerHTML));
     myWindow.document.write('</body>')
   myWindow.document.write('</html>')
   myWindow.document.close();
@@ -26,53 +27,50 @@ const exportAsPDF = (dm: DataManagerModel) => {
   myWindow.print();
 }
 
-const getContent = (dm: DataManagerModel): HTMLDivElement => {
-  const div = document.createElement('div');
+const getContent = (dm: DataManagerModel): Array<HTMLDivElement> => {
+  const divs: Array<HTMLDivElement> = [];
 
-  const topics = dm.getData().topics;
-  topics.getList().forEach(topic => {
-    div.appendChild(titlePage(topic.label));
+  const topics = dm.getData().topics.getList();
+
+  topics.forEach(topic => {
+    const div = document.createElement('div');
+    div.appendChild(primeTitleElement(topic.label));
 
     const headlines = dm.getData().headlines.filter({
       topics: topic.id,
       headlines: -1,
       sections: -1
     });
+
     headlines.forEach(headline => {
+      div.appendChild(secTitleElement(topic.label + ": " + headline.label));
+
       const sections = dm.getData().sections.filter({
         topics: topic.id,
         headlines: headline.id,
         sections: -1
       });
+
       sections.forEach(section => loadContentInto(div, section.content));
     });
 
-    div.appendChild(emptyPage());
+    divs.push(div);
   });
   
-  return div;
+  return divs;
 }
 
-const titlePage = (title: string): HTMLDivElement => {
+const primeTitleElement = (title: string): HTMLDivElement => {
   const div = document.createElement('div');
-  div.setAttribute('style', `
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-
-    font-size: 200%;
-    font-weight: bold;
-  `);
+  div.className = "primeTitleElement";
   div.innerText = title;
   return div;
 }
 
-const emptyPage = (text?: string): HTMLDivElement => {
+const secTitleElement = (title: string): HTMLDivElement => {
   const div = document.createElement('div');
-  div.style.width = '100vw';
-  div.style.height = '100vh';
+  div.className = "secTitleElement";
+  div.innerText = title;
   return div;
 }
 

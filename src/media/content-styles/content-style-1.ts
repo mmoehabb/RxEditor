@@ -1,4 +1,26 @@
 const style = `
+.primeTitleElement {
+  text-align: center;
+  padding: 30px;
+  font-size: 250%;
+  font-weight: bolder;
+  border-radius: 5px;
+  color: #f6f6f6;
+  background-color: #222; 
+  page-break-before: always;
+}
+
+.secTitleElement {
+  padding: 20px 40px;
+  font-size: 200%;
+  font-weight: bold;
+  border: solid 5px black;
+  border-radius: 5px;
+  color: #f1f1f1;
+  background-color: #444; 
+  page-break-before: auto;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +36,7 @@ h1 {
   padding: 0 10px;
   margin: 20px 0 10px 0;
   border-bottom: solid 2px #444;
+  page-break-before: auto;
 }
 
 h2, h3 {
