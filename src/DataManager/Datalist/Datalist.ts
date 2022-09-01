@@ -77,6 +77,13 @@ abstract class DatalistInterface<T extends DataTypes> {
     this.setList(topics);
   }
 
+  moveElement(from: number, to: number) {
+    const list = this.getList();
+    const item = list.splice(from, 1)[0];
+    list.splice(to, 0, item);
+    this.setList(list);
+  }
+
   // unstable functions
   add(selections: Selections){};
   filter(selections: Selections){};

@@ -43,12 +43,14 @@ declare interface ModelInterface {
   removeSelectedTopic(): void;
   moveSelectedTopicUp(): void;
   moveSelectedTopicDown(): void;
+  moveTopic(from: number, to: number): void;
 
   getSelectedHeadline(): Headline;
   modifySelectedHeadline(label: string): void;
   removeSelectedHeadline(): void;
   moveSelectedHeadlineUp(): void;
   moveSelectedHeadlineDown(): void;
+  moveHeadline(from: number, to: number): void;
 
   getSelectedSection(): Section;
   modifySelectedSection(label: string): void;
@@ -56,6 +58,7 @@ declare interface ModelInterface {
   removeSelectedSection(): void;
   moveSelectedSectionUp(): void;
   moveSelectedSectionDown(): void;
+  moveSection(from: number, to: number): void;
 
   clone(): ModelInterface;
 }
