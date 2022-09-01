@@ -2,6 +2,7 @@ import DataManagerModel from "../../../DataManager/StrategyModel/Model";
 import SelectionsInterface from "../../../DataManager/types/Selections";
 import Button from "../../../MiniComponents/Button";
 import getStyle from "../style/CategoryStyle";
+import ItemButton from "./ItemButton";
 
 interface Props {
     category: "topics" | "headlines" | "sections";
@@ -61,16 +62,16 @@ const CategoryGroup = ({dataManager, category, viewMode}: Props) => {
             </div>
             <div>
                 {collection.map((obj, i) => 
-                    <Button 
-                        key={i}
-                        label={obj.label} 
-                        style={obj.id === selectedItemId ? 
-                            style.item.selected : {}
-                        }
-                        mainStyle={style.item.default}
-                        hoverStyle={style.item.hover}
-                        onClick={() => onSelect(obj.id)}
-                    />
+					<ItemButton 
+						key={i}
+						index={i}
+						category={category}
+						data={obj} 
+						selectedItemId={selectedItemId}
+						style={style} 
+						onSelect={() => onSelect(obj.id)}
+						onMove={(from, to) => dataList.moveElement(from, to)}
+					/>
                 )}
             </div>
         </div>
