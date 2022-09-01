@@ -1,4 +1,4 @@
-h1 {
+#TextEditorDiv h1 {
   color: #222;
   padding: 5px 10px;
   margin: 20px 0 10px 0;
@@ -6,25 +6,25 @@ h1 {
   page-break-before: auto;
 }
 
-h2, h3 {
+#TextEditorDiv h2, h3 {
   color: #333;
   margin: 15px 0 5px 0;
 }
 
-div, p {
+#TextEditorDiv div, p {
   margin: 20px 0;
   text-align: justify;
 }
 
-ol, ul {
+#TextEditorDiv ol, ul {
   margin: 0 45px;
 }
 
-li {
+#TextEditorDiv li {
   margin: 10px 0;
 }
 
-code {
+#TextEditorDiv code {
   display: block;
   padding: 25px;
   margin: 25px;
@@ -34,7 +34,7 @@ code {
   background-color:#333;
 }
 
-note {
+#TextEditorDiv note {
   display: block;
   padding: 25px;
   margin: 25px;
