@@ -151,11 +151,6 @@ class DataManagerModel implements ModelInterface {
     this.data.topics.moveElementDown(selected.id);
   }
 
-  moveTopic(from: number, to: number): void {
-      const topics = this.getData().topics;
-      topics.moveElement(from, to);
-  }
-
   /* Headlines Functions */
   getSelectedHeadline() {
     const selectedHeadlineId = this.selections.headlines;
@@ -194,11 +189,6 @@ class DataManagerModel implements ModelInterface {
   moveSelectedHeadlineDown() {
     const selected = this.getSelectedHeadline();
     this.data.headlines.moveElementDown(selected.id);
-  }
-
-  moveHeadline(from: number, to: number): void {
-    const headlines = this.getData().headlines;
-    headlines.moveElement(from, to);
   }
 
   /* Sections Functions */
@@ -241,11 +231,6 @@ class DataManagerModel implements ModelInterface {
   moveSelectedSectionDown() {
     const selected = this.getSelectedSection();
     this.data.sections.moveElementDown(selected.id);
-  }
-
-  moveSection(from: number, to: number): void {
-    const sections = this.getData().sections;
-    sections.moveElement(from, to);
   }
 
   clone(): DataManagerModel {

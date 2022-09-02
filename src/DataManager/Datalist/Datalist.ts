@@ -29,6 +29,20 @@ abstract class DatalistInterface<T extends DataTypes> {
   get(id: number) {
     return this.list.filter((elem) => elem.id === id)[0];
   }
+  
+  getIndex(id: number) {
+    let index = null;
+    this.getList().every((elem, i) => { 
+      // converted to string because of an unreasonable bug
+      // when comparing the numbers here with ===
+      if (elem.id.toString() === id.toString()) {
+        index = i;
+        return false; 
+      }
+      return true;
+    })
+    return index;
+  }
 
   remove(id: number, disableUpdate?: boolean) {
     const newList = this.list.filter((elem) => elem.id !== id);
@@ -77,11 +91,16 @@ abstract class DatalistInterface<T extends DataTypes> {
     this.setList(topics);
   }
 
-  moveElement(from: number, to: number) {
+  placeE1BehindE2(id1: number, id2: number) {
     const list = this.getList();
-    const item = list.splice(from, 1)[0];
-    list.splice(to, 0, item);
-    this.setList(list);
+    const i1 = this.getIndex(id1);
+    const i2 = this.getIndex(id2);
+
+    if (i1 !== null && i2 !== null) {
+      const item = list.splice(i1, 1)[0];
+      list.splice(i2, 0, item);
+      this.setList(list);
+    }
   }
 
   // unstable functions

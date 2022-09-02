@@ -64,13 +64,13 @@ const CategoryGroup = ({dataManager, category, viewMode}: Props) => {
                 {collection.map((obj, i) => 
 					<ItemButton 
 						key={i}
-						index={i}
+						index={obj.id}
 						category={category}
 						data={obj} 
 						selectedItemId={selectedItemId}
 						style={style} 
 						onSelect={() => onSelect(obj.id)}
-						onMove={(from, to) => dataList.moveElement(from, to)}
+						onMove={(from, to) => dataList.placeE1BehindE2(from, to)}
 					/>
                 )}
             </div>
