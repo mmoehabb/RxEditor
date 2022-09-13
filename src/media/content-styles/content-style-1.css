@@ -4,6 +4,7 @@
   margin: 20px 0 10px 0;
   border-bottom: solid 1px #444;
   page-break-before: auto;
+  font-size: 125%;
 }
 
 #TextEditorDiv h2, h3 {

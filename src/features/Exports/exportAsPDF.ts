@@ -43,7 +43,7 @@ const getContent = (dm: DataManagerModel): Array<HTMLDivElement> => {
     });
 
     headlines.forEach(headline => {
-      div.appendChild(secTitleElement(topic.label + ": " + headline.label));
+      div.appendChild(secTitleElement(headline.label));
 
       const sections = dm.getData().sections.filter({
         topics: topic.id,

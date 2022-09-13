@@ -2,7 +2,7 @@ const style = `
 .primeTitleElement {
   text-align: center;
   padding: 30px;
-  font-size: 250%;
+  font-size: 175%;
   font-weight: bolder;
   border-radius: 5px;
   color: #000;
@@ -12,7 +12,7 @@ const style = `
 .secTitleElement {
   padding: 10px 0;
   margin-top: 40px;
-  font-size: 200%;
+  font-size: 150%;
   font-weight: bold;
   border-top: solid 3px black;
   color: #222;
@@ -35,6 +35,7 @@ h1 {
   margin: 20px 0 10px 0;
   border-bottom: solid 1px #444;
   page-break-before: auto;
+  font-size: 125%;
 }
 
 h2, h3 {
